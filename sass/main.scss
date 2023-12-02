@@ -6,42 +6,129 @@
 
 body {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	height: 100vh;
+	margin-top: 5em;
+	font-family: 'Comfortaa', sans-serif;
+	color: #fff;
+	text-shadow: 1px 1px 5px #00000058;
+	background-image: linear-gradient(-45deg, #0cbaba, #380036);
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	text-align: center;
+	width: 500px;
+	padding: 3em;
+	background-color: #ffffff18;
+	box-shadow: 0 0 15px #161518b3, inset 0 0 1px #ffffff45;
+	border-radius: 15px;
 
-	.ball {
+	h1 {
+		text-align: center;
+		font-weight: 700;
+		font-size: 5rem;
+	}
+
+	h2 {
+		font-weight: 300;
+		margin-top: 1em;
+	}
+
+	input {
+		width: 100%;
+		padding: 0.4em;
+		text-align: center;
+		font-family: 'Comfortaa', sans-serif;
+		font-size: 1.2em;
+		border-radius: 5px;
+		border: none;
+		outline: none;
+	}
+	.answer {
+		margin-top: 1em;
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+	.generated-answer {
+		margin-top: 1em;
+		font-weight: 400;
+	}
+	.error{
+		margin-top: 1em;
+		font-weight: 400;
+		color: lightcoral;
+	}
+}
+
+// ======= BALL =======
+.ball {
+	position: relative;
+	width: 200px;
+	aspect-ratio: 1/1;
+	margin: 3em 0;
+	border-radius: 50%;
+	transform-origin: center;
+	background-color: rgb(20, 20, 20);
+	overflow: hidden;
+	cursor: pointer;
+	
+
+	.white-dot {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: relative;
-		width: 300px;
+		width: 60px;
 		aspect-ratio: 1/1;
+		background-color: #fff;
 		border-radius: 50%;
-		background-color: black;
-		overflow: hidden;
-        cursor: pointer;
-
-		.white-dot {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			position: relative;
-			width: 100px;
-			aspect-ratio: 1/1;
-			background-color: #fff;
-			border-radius: 50%;
-			left: 50%;
-			top: 50%;
-			translate: -50% -50%;
-			z-index: 100;
-			.number {
-				color: black;
-				font-size: 5rem;
-			}
+		left: 50%;
+		top: 50%;
+		translate: -50% -50%;
+		z-index: 100;
+		.number {
+			color: black;
+			font-size: 2.5rem; 
+			font-weight: bold;
+			text-shadow: none;
 		}
 	}
+}
+
+.ball-shake {
+	animation: ballshake 1s ease-in-out .5s 1 alternate forwards; 
+}
+
+
+// ======= ANIMATION =======
+
+@keyframes ballshake {
+	0% {
+		transform: translateX(0px);
+	}
+
+	25% {
+		translate: (30px);
+		transform: rotate(25deg) scaleX(.98);
+		
+	}
+	50% {
+		translate: (-30px);
+		transform: rotate(-25deg) scaleX(1);
+	}
+
+	75% {
+		translate: (30px);
+		transform: rotate(25deg) scaleX(.98);
+	}
+
+	100% {
+		transform: translateX(0px);
+	}
+
 }
